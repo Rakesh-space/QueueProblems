@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace QueueProblems
 {
-    class UC1CreateQueue
+    class UC2Dequeuebeg
     {
 
         internal Node front;  //declare the Node type variable front
         internal Node rear;   //declare the Node type variable rear
 
-        public UC1CreateQueue()
+        public UC2Dequeuebeg()
         {
             this.front = null;  //initilize the front value is null
             this.rear = null;   //initilize the rear value is null
@@ -34,6 +34,24 @@ namespace QueueProblems
                 this.rear = newNode;
             }
             Console.WriteLine("{0} inserted into Queue", data);
+        }
+        internal void Dequeue() //deleting element from begining
+        {
+            if (this.front == null) //Checking the queue of front in empty or not
+            {
+                Console.WriteLine("The Queue is empty");
+                return;
+            }
+
+            Node temp = this.front; //front variable assgined to the Node type of temp variable
+            this.front = this.front.next; //increment the front variable possition
+
+            if (this.front == null)  //Checking the queue of front in empty or not
+            {
+                this.rear = null;  //initialize the rear also null
+            }
+
+            Console.WriteLine("Item deleted is {0}", temp.data); //display the deleted value front of queue
         }
         internal void display()  //display the element of queue
         {
